@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDGC Members - Developer Community Profiles</title>
+    <meta name="description" content="Discover talented developers in the Google Developer Group on Campus community. Browse member profiles, skills, and connect with fellow developers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <!-- <svg class="splash-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg> -->
+                <img src="images/logo.png" alt="logo" class="splash-icon">
+            </div>
+            <h1 class="splash-title">GDGC Members</h1>
+            <p class="splash-subtitle">Developer Community</p>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" class="main-app" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-left">
+                        <div class="header-logo">
+                            <img src="images/logo.png" alt="logo" class="header-logo">
+                        </div>
+                        <div>
+                            <h1 class="header-title">Google Developer Group Members</h1>
+                            <p class="header-count"><span id="member-count">0</span> members</p>
+                        </div>
+                    </div>
+                    <button id="theme-toggle" class="theme-toggle">
+                        <svg id="moon-icon" class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg id="sun-icon" class="theme-icon" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <div class="content-grid">
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <div class="sidebar-sticky">
+                            <!-- Search Bar -->
+                            <div class="search-container">
+                                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                                <input type="text" id="search-input" class="search-input" placeholder="Search by name or bio...">
+                            </div>
+
+                            <!-- Filters -->
+                            <div id="filter-panel" class="filter-panel">
+                                <div class="filter-header">
+                                    <h3 class="filter-title">Filters</h3>
+                                    <button id="clear-filters" class="clear-filters" style="display: none;">
+                                        <svg class="clear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                                        </svg>
+                                        Clear
+                                    </button>
+                                </div>
+
+                                <div class="filter-section">
+                                    <p class="filter-label">Role</p>
+                                    <div id="role-filters" class="filter-badges"></div>
+                                </div>
+
+                                <div class="filter-section">
+                                    <p class="filter-label">Skills</p>
+                                    <div id="skill-filters" class="filter-badges"></div>
+                                </div>
+
+                                <div class="filter-section">
+                                    <p class="filter-label">Location</p>
+                                    <div id="location-filters" class="filter-badges"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Members Grid -->
+                    <div class="members-section">
+                        <!-- Loading State -->
+                        <div id="loading-state" class="loading-state" style="display: none;">
+                            <div class="loading-grid">
+                                <div class="loading-card"></div>
+                                <div class="loading-card"></div>
+                                <div class="loading-card"></div>
+                                <div class="loading-card"></div>
+                                <div class="loading-card"></div>
+                                <div class="loading-card"></div>
+                            </div>
+                        </div>
+
+                        <!-- Error State -->
+                        <div id="error-state" class="error-state" style="display: none;">
+                            <div class="error-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                            </div>
+                            <h3 class="error-title">Failed to Load Members</h3>
+                            <p class="error-message">We couldn't fetch the member data. Please check your connection and try again.</p>
+                            <button id="retry-button" class="retry-button">Try Again</button>
+                        </div>
+
+                        <!-- No Results -->
+                        <div id="no-results" class="no-results" style="display: none;">
+                            <p>No members found matching your criteria.</p>
+                        </div>
+
+                        <!-- Members Grid -->
+                        <div id="members-grid" class="members-grid"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
