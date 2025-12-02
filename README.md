@@ -45,14 +45,14 @@ This project demonstrates HTML, CSS, and JavaScript skills and delivers a modern
 
 or 
 
-
+[Click Here](https://rakshit-gdgc-recruitment.netlify.app/)
 
 ---
 
 ## 📝 Credits & Assets
 
 - Sample avatars used in the site are sourced from [DiceBear](https://dicebear.com), a well-known avatar-generation service.  
-- The project was created by **Rakshit Raj** (you) as part of the GDGC recruitment assignment.  
+- The project was created by **Rakshit Raj** as part of the GDGC recruitment assignment.  
 
 ---
 
